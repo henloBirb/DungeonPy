@@ -68,3 +68,6 @@
     ~ behold the README.md ~
 
 
+Requirements: 
+- PyGame
+- PyTmx
