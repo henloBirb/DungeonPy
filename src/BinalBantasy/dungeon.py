@@ -1,14 +1,8 @@
-# dungeon.py
-# this file will house the main game
-# all music files will be stored in this directory
-# all sprite sheets will be stored in ~Data
-# all .tmx files will be stored in ~Resources
-
 import pygame
 pygame.init()
 
 win = pygame.display.set_mode((500,500))
-pygame.display.set_caption("First Game")
+pygame.display.set_caption("Binal Bantasy")
 
 x = 50
 y = 50

@@ -71,3 +71,8 @@
 Requirements: 
 - PyGame
 - PyTmx
+- PyScroll
+
+TMX Files Edited with:
+- Tiled
+
