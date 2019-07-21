@@ -13,11 +13,13 @@ import pyscroll
 import pyscroll.data
 from pyscroll.group import PyscrollGroup
 
+# from pallete import *
+
 # define configuration variables here
 RESOURCES_DIR = 'Data'
 
 HERO_MOVE_SPEED = 69  # pixels per second
-MAP_FILENAME = 'BinalOverworld.tmx'
+MAP_FILENAME = 'BinalOverworld2.tmx'
 
 
 # simple wrapper to keep the screen resizeable
@@ -34,6 +36,17 @@ def get_map(filename):
 # make loading images a little easier
 def load_image(filename):
     return pygame.image.load(os.path.join(RESOURCES_DIR, filename))
+
+# make playing music easier
+def playMusic(song):
+    # does not crash if file misnamed/does not quite exist
+    try:
+        pygame.mixer.init()
+        pygame.mixer.music.load(song)
+        pygame.mixer.music.play(-1, 0.0) # '-1' as first parameter
+                                         # therefore loops
+    except pygame.error: 
+        print("music error:", song)
 
 
 # object for multirow/column pallete of characters
@@ -323,6 +336,23 @@ class QuestGame(object):
             if sprite.feet.collidelist(self.walls) > -1:
                 sprite.move_back(dt)
 
+    # plays music based on map file keyed to dictionary
+    # also covers changing map sound effect
+    # def changeMusicAndInstance(self, surface, oldMusic=None):
+    #     tmap = self.filename
+    #     song = MusicDict[tmap]
+    #     # instance change sound, from Zelda stairs sound
+    #     playSound("Enter.wav", .15)
+
+    #     if oldMusic == None:
+    #         oldMusic = MusicDict[self.oldMap]
+       
+    #     if self.mode != "Overworld":
+    #         if song == oldMusic: return None
+       
+    #     # loops music indefinitely for that map
+    #     playMusic(song)
+
     def run(self):
         """ Run the game loop
         """
@@ -332,12 +362,18 @@ class QuestGame(object):
         from collections import deque
         times = deque(maxlen=30)
 
+        #idle hero animation
+        ticks = pygame.time.get_ticks()
+        self.hero.walkAnimation(ticks)
+        playMusic('overworld.wav')
+
         try:
             while self.running:
                 dt = clock.tick() / 1000.
                 times.append(clock.get_fps())
-                # print(sum(times)/len(times))
-
+                # print(sum(times)/len(times))#idle hero animation
+                ticks = pygame.time.get_ticks()
+                self.hero.walkAnimation(ticks)
                 self.handle_input()
                 self.update(dt)
                 self.draw(screen)
