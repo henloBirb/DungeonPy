@@ -79,7 +79,7 @@ class Hero(Pallete):
         self.rect = self.image.get_rect()
         self.feet = pygame.Rect(0, 0, self.rect.width * .5, 8)
 
-        Pallete.__init__(self, 'heroes.png', 8, 12, 2, 0)
+        Pallete.__init__(self, 'heroes.png', 8, 12, 2, 4)
         (rows, cols) = (self.rows, self.cols)
         image = load_image('heroes.png').convert_alpha() 
         (width, height) = (self.width, self.height)
@@ -270,24 +270,24 @@ class QuestGame(object):
 
         # if self.moving != False:
         ticks = pygame.time.get_ticks()
-        if pressed[K_w]: 
+        if pressed[K_UP]: 
             self.hero.currImageList = self.hero.downs
             self.hero.walkAnimation(ticks)
             self.hero.velocity[1] = -HERO_MOVE_SPEED
             #self.steps += 1
-        elif pressed[K_s]:
+        elif pressed[K_DOWN]:
             self.hero.currImageList = self.hero.ups
             self.hero.walkAnimation(ticks)
             self.hero.velocity[1] = HERO_MOVE_SPEED
             #self.steps += 1
         else:
             self.hero.velocity[1] = 0
-        if pressed[K_a]:
+        if pressed[K_LEFT]:
             self.hero.currImageList = self.hero.lefts
             self.hero.walkAnimation(ticks)
             self.hero.velocity[0] = -HERO_MOVE_SPEED
             #self.steps += 1
-        elif pressed[K_d]:
+        elif pressed[K_RIGHT]:
             self.hero.currImageList = self.hero.rights
             self.hero.walkAnimation(ticks)
             self.hero.velocity[0] = HERO_MOVE_SPEED
@@ -297,15 +297,15 @@ class QuestGame(object):
             self.hero.velocity[0] = 0
         # sprint
         if pressed[K_SPACE]:
-            self.hero.velocity[0] *= 1.5
-            self.hero.velocity[1] *= 1.5
+            self.hero.velocity[0] *= 1.7
+            self.hero.velocity[1] *= 1.7
             # more likely to battle encounter if sprinting
-            if self.hero.velocity[0] > 0 or self.hero.velocity[1] > 0:
-                self.steps += 2
-            if self.hero.velocity[0] >= 1.5 * HERO_MOVE_SPEED:
-                pass
-            if self.hero.velocity[1] >= 1.5 * HERO_MOVE_SPEED:
-                pass
+            # if self.hero.velocity[0] > 0 or self.hero.velocity[1] > 0:
+            #     #self.steps += 2
+            # if self.hero.velocity[0] >= 1.5 * HERO_MOVE_SPEED:
+            #     pass
+            # if self.hero.velocity[1] >= 1.5 * HERO_MOVE_SPEED:
+            #     pass
 
         # stops character from moving when battlescreen is initiated
         #if self.mode == "Battle":
