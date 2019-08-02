@@ -3,6 +3,75 @@
 # behold...
 # Binal Bantasy
 
+'''
+~ presenting ~
+
+  __                                                                          
+ /\ \                                                                         
+ \_\ \  __  __    ___      __      __    ___     ___        _____   __  __    
+ /'_` \/\ \/\ \ /' _ `\  /'_ `\  /'__`\ / __`\ /' _ `\     /\ '__`\/\ \/\ \   
+/\ \L\ \ \ \_\ \/\ \/\ \/\ \L\ \/\  __//\ \L\ \/\ \/\ \  __\ \ \L\ \ \ \_\ \  
+\ \___,_\ \____/\ \_\ \_\ \____ \ \____\ \____/\ \_\ \_\/\_\\ \ ,__/\/`____ \ 
+ \/__,_ /\/___/  \/_/\/_/\/___L\ \/____/\/___/  \/_/\/_/\/_/ \ \ \/  `/___/> \
+                           /\____/                            \ \_\     /\___/
+                           \_/__/                              \/_/     \/__/ 
+
+
+~ a game developed in python by ~
+
+     _____                                               
+  __|  _  |__  ____  __    _ _____   ______  ____   _    
+ |  |_| |    ||    \ \ \  //|     \ |   ___||    \ | |   
+ |   _  |    ||     \ \ \// |      \|   ___||     \| |   
+ |__| |_|  __||__|\__\/__/  |______/|______||__/\____|   
+    |_____|                                              
+  ____    ____   _  _____                                
+ |    \  |    \ | ||     \                               
+ |     \ |     \| ||      \                              
+ |__|\__\|__/\____||______/                              
+     _____                                               
+ ___|    _|__  ____    _____   ____    ____    ____   _  
+|    \  /  | ||    \  |     | |    |  |    \  |    \ | | 
+|     \/   | ||     \ |     \ |    |_ |     \ |     \| | 
+|__/\__/|__|_||__|\__\|__|\__\|______||__|\__\|__/\____| 
+    |_____|                                              
+
+
+~ also known as ~
+
+ __  __     ______     __    __        ______     ______     __    __     ______     ______    
+/\ \_\ \   /\  __ \   /\ "-./  \      /\  ___\   /\  __ \   /\ "-./  \   /\  ___\   /\  ___\   
+\ \  __ \  \ \  __ \  \ \ \-./\ \     \ \ \__ \  \ \  __ \  \ \ \-./\ \  \ \  __\   \ \___  \  
+ \ \_\ \_\  \ \_\ \_\  \ \_\ \ \_\     \ \_____\  \ \_\ \_\  \ \_\ \ \_\  \ \_____\  \/\_____\ 
+  \/_/\/_/   \/_/\/_/   \/_/  \/_/      \/_____/   \/_/\/_/   \/_/  \/_/   \/_____/   \/_____/ 
+
+
+
+~ under the working title of ~
+
+
+
+          ▀█████████▄   ▄█  ███▄▄▄▄      ▄████████  ▄█                              
+            ███    ███ ███  ███▀▀▀██▄   ███    ███ ███                              
+            ███    ███ ███▌ ███   ███   ███    ███ ███                              
+           ▄███▄▄▄██▀  ███▌ ███   ███   ███    ███ ███                              
+          ▀▀███▀▀▀██▄  ███▌ ███   ███ ▀███████████ ███                              
+            ███    ██▄ ███  ███   ███   ███    ███ ███                              
+            ███    ███ ███  ███   ███   ███    ███ ███▌    ▄                        
+          ▄█████████▀  █▀    ▀█   █▀    ███    █▀  █████▄▄██                        
+                                                   ▀                                
+▀█████████▄     ▄████████ ███▄▄▄▄       ███        ▄████████    ▄████████ ▄██   ▄   
+  ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄   ███    ███   ███    ███ ███   ██▄ 
+  ███    ███   ███    ███ ███   ███    ▀███▀▀██   ███    ███   ███    █▀  ███▄▄▄███ 
+ ▄███▄▄▄██▀    ███    ███ ███   ███     ███   ▀   ███    ███   ███        ▀▀▀▀▀▀███ 
+▀▀███▀▀▀██▄  ▀███████████ ███   ███     ███     ▀███████████ ▀███████████ ▄██   ███ 
+  ███    ██▄   ███    ███ ███   ███     ███       ███    ███          ███ ███   ███ 
+  ███    ███   ███    ███ ███   ███     ███       ███    ███    ▄█    ███ ███   ███ 
+▄█████████▀    ███    █▀   ▀█   █▀     ▄████▀     ███    █▀   ▄████████▀   ▀█████▀  
+
+
+'''
+
 import os.path
 import random
 import math
@@ -144,22 +213,6 @@ class Pallete(pygame.sprite.Sprite):
 
 
 class Hero(Pallete):
-    """ Our Hero
-
-    The Hero has three collision rects, one for the whole sprite "rect" and
-    "old_rect", and another to check collisions with walls, called "feet".
-
-    The position list is used because pygame rects are inaccurate for
-    positioning sprites; because the values they get are 'rounded down'
-    as integers, the sprite would move faster moving left or up.
-
-    Feet is 1/2 as wide as the normal rect, and 8 pixels tall.  This size size
-    allows the top of the sprite to overlap walls.  The feet rect is used for
-    collisions, while the 'rect' rect is used for drawing.
-
-    There is also an old_rect that is used to reposition the sprite if it
-    collides with level walls.
-    """
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -347,7 +400,7 @@ class Battle(object):
         # 
 
 
-class QuestGame(object):
+class BinalGame(object):
     """ This class is a basic game.
 
     This class will load data, create a pyscroll group, a hero object.
@@ -533,6 +586,11 @@ class QuestGame(object):
        
     #     # loops music indefinitely for that map
     #     playMusic(song)
+    #     def showStartScreen(self):
+    #     self.draw('title_demo')
+    #     if checkForKeyPress():
+    #         self.run()
+
 
     def run(self):
         """ Run the game loop
@@ -571,7 +629,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Binal Bantasy')
 
     try:
-        game = QuestGame()
+        game = BinalGame()
         game.run()
     except:
         pygame.quit()
