@@ -512,7 +512,7 @@ class BinalGame(object):
         self.group.draw(surface)
 
     def nearestPortal(self, trigger=False):
-                (x, y) = self.hero.position
+        (x, y) = self.hero.position
         for portal in self.portalsIn:
             if trigger == False:
                 trigger = True
@@ -714,6 +714,25 @@ class BinalGame(object):
                 # print(sum(times)/len(times))#idle hero animation
                 ticks = pygame.time.get_ticks()
                 self.hero.walkAnimation(ticks)
+                # self.randomBattle()
+                
+                # changing map
+                if self.filename != filename:
+                    if self.oldMap == os.path.join(RESOURCES_DIR, self.filename):
+                        oldMap = inPortalDict[str(os.path.join(RESOURCES_DIR, self.filename)) + self.portalName]
+                    else:
+                        oldMap = outPortalDict[str(os.path.join(RESOURCES_DIR, self.filename))]
+                    self.__init__(self.filename, self.oldEntrance, oldMap, self.hero)
+                    self.oldEntrance = OldEntranceDict[filename]
+
+                    if os.path.jain(RESOURCES_DIR, inPortalDict[filename]) == self.filename:
+                        if self.oldEntrance != None
+                            position = (self.oldEntrance[0], self.oldEntrance[1])
+                            self.hero.position = position
+                            self.oldPosition = position
+                    self.run()
+        
+
                 self.handle_input()
                 self.update(dt)
                 self.draw(screen)
