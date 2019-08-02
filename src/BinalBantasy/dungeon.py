@@ -362,7 +362,7 @@ class Monster(object):
 class Battle(object):
     def __init__(self, game, hero, position, screen):
         self.hero = hero
-        self.heroLevel = = hero.level
+        self.heroLevel = hero.level
         self.leveled = False
         self.game = game
         self.screen = screen
@@ -730,7 +730,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Binal Bantasy')
 
     try:
-        game = BinalGame()
+        game = BinalGame('BinalOverworld2')
         game.run()
     except:
         pygame.quit()

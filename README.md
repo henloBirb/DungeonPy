@@ -76,6 +76,138 @@ Requirements:
 TMX Files Edited with:
 - Tiled
 
+
+# Setup
+
+Please se the above properties and make sure you have them installed
+
+In order to run Binal Bantasy you NEED PyGame, PyTmx, and PyScroll.
+
+We would also recommend downloading Tiled which will allow you to
+see all the areas we designed for the game without actually having to
+visit them. It will also display how we handled collision.
+
+You will find the file 'dungeon.py' in src/BinalBantasy/
+Run the file there. If you are using an editor, make sure that
+is the directory you have open, otherwise it may have trouble
+finding the correct path to the data and resources folder which
+house the images, sprite sheets, and levels that are written in
+an xml-like format called tmx which is home to sprite and 
+collision data and is the code that tells pygame what to draw
+on the screen.
+
+If you have any issues with setup, please feel free to reach
+out to hpr11@my.fsu.edu to help get things working so you can play
+the game!
+
+
+# Final Project Delivery Information:
+
+## Description of Project
+
+With Binal Bantasy, what we aimed to do was learn something new.
+Neither of us had attemted to make any game before let alon a
+sprawling RPG. We tried to take measures to adress scope creep
+and keep things manageable but even with that it proved to be a 
+huge task for the both of us!
+
+## User Interface
+
+The arrow keys control your movement.
+
+The '+' and '-' keys (really '=' for '+') allow the user to zoom 
+in or out. This functionality was added to allow any user on any
+platform to get a view they were comfortable with in the window.
+
+the 'esc' key closes the game.
+
+The player begins in an overworld housing the different locations.
+
+The intention if for the player to enter and exit the locations
+on the overworld map by walking into them, or once inside, walking
+to the edge of the map to exit.
+
+The intintion is for battles to take place randomly but not inside
+of towns or inns -- only in the overworld or in dungeouns. 
+
+## Areas we Designed:
+
+A huge amount of effort went in to making the maps and various
+areas for the game. We are proud to state that Binal Bantasy 
+features TWENTY-ONE different areas!
+
+The best way to view them is opening the tiled.
+
+List of areas:
+- Overworld
+- Town 1
+- Town 2
+- City 1
+- FSU
+- Library
+- Temple 1
+- Dungeon 1
+- Final Dungeon
+- Multi-floored tower
+- Everest
+- Stonehenge
+- Houses
+- Inns
+- Basements
+- Sand Tower
+
+The time and effort that went into planning and designing
+was very large considering neither of us are artists. We did
+use open assets to design and use the sprites and to draw
+the different areas. The best way to really see that in action
+is to open all of the .tmx files in the Tiled editor (it's free)
+
+## Resources used:
+- PyGame documentation and tutorials
+- Kids Can Code Pygame Tutorial
+- PyScroll tutorial on GitHub
+- Pyscroll Documentation
+- Open Game Art assets
+- Dragon Quest Assests
+- Final Fantasy Assets
+- RPG Maker Assets
+- Dragon Quest VI Spritesheets
+- PyTmx documentation
+- Python OS library (to help with file path differences)
+- The Stolen Crown (one of the only RPGs we could find)
+
+## Challenges & Lessons Learned & Division of Tasks
+
+Being a group of two taking on a role-playing game the biggest
+challenged we faced was manpower. For Hayden it was finding time
+to work on the game between two classes and a full-time job,
+and for Marlan it was finding time to work on the game while also
+balancing assingments and planning/writing questions for the summer
+prigramming competition.
+
+Despite that we met frequently and planned and discussed development
+and where we wanted to take the game and tacked issues together and 
+head on. The amount of work that went into making the game look 
+VISUALLY appealing (which you want if you're making a VIDEO game)
+was a really big strain. Planning and figuring out how to make sprite
+animations occur in an elegant way was also a challenge.
+
+Good examples were hard to find. While it was easy to find tutorials
+for creating endless runners, mario clones, tetris clones, and the like
+on YouTube in Pygame, finding RPG examples was pretty tough, and none of
+them had walkthroughs. Additionally -- just about every attempt we could
+find was written in Python 2. We wanted to panic -- and maybe did for
+a moment -- but we resisted the urge to change to something easier
+and instead devoted our time to trying to put something interesting
+on the screen that really evoked the feeling of playing a late 80s
+or early 90s JRPG.
+
+We divided the work up pretty evenly with both of us reaching our 
+hands into every facet of the game and the design. There really wasn't
+anothe option with there only being two of us. We did a lot of work 
+together by renting 4 hour chunks of the study rooms in Strozier.
+
+
 # The Game
 
 Binal Bantasy is a role-playing game inspired by the
@@ -89,8 +221,7 @@ The game features the following:
 - Boss Monsters
 - Turn-Based Combat
 - Leveling
-- Items
-- Money
+- Magic
 
 ## Overworld
 
@@ -138,23 +269,14 @@ This will allow the player to grow stronger. The player
 will need to level up to get strong enough to defeat 
 the boss mosnters.
 
-## Items
+## Magic
 
-Players will be able to purchase items in towns as well as
-discover them within the overworld and dungeons. Items can
-also be purchased.
-
-Items include:
-- Keys
-- Health Potions
-- Armor
-- Weapons
+The player will use Magic to accomplish a variety of tasks
+as well as gain access to new areas. Magic will function
+essentially as a key to new areas. Players can also use
+magic in combat. Magic is learned automatically by
+leveling up the hero.
 
 
-## Money
 
-The player will purchase items with money. Money will
-be aquired by defeating enemies in the overworld and 
-in dungeons. The amount will be limited to the type
-of enemy with a random fluxuation.
-
+~~ Game Developed by Hayden Rogers and Marlan McInnes-Taylor ~~
