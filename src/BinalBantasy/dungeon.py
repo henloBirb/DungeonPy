@@ -135,22 +135,6 @@ class Pallete(pygame.sprite.Sprite):
 
 
 class Hero(Pallete):
-    """ Our Hero
-
-    The Hero has three collision rects, one for the whole sprite "rect" and
-    "old_rect", and another to check collisions with walls, called "feet".
-
-    The position list is used because pygame rects are inaccurate for
-    positioning sprites; because the values they get are 'rounded down'
-    as integers, the sprite would move faster moving left or up.
-
-    Feet is 1/2 as wide as the normal rect, and 8 pixels tall.  This size size
-    allows the top of the sprite to overlap walls.  The feet rect is used for
-    collisions, while the 'rect' rect is used for drawing.
-
-    There is also an old_rect that is used to reposition the sprite if it
-    collides with level walls.
-    """
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -236,7 +220,7 @@ class Hero(Pallete):
 
 
 
-class QuestGame(object):
+class BinalGame(object):
     """ This class is a basic game.
 
     This class will load data, create a pyscroll group, a hero object.
@@ -464,7 +448,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Binal Bantasy')
 
     try:
-        game = QuestGame()
+        game = BinalGame()
         game.run()
     except:
         pygame.quit()
