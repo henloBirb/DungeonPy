@@ -11,7 +11,6 @@
  </tileset>
  <tileset firstgid="2417" name="houses1" tilewidth="32" tileheight="32" tilecount="208" columns="13">
   <image source="../resources/houses1.png" width="447" height="539"/>
-  
  </tileset>
  <layer id="1" name="Tile Layer 1" width="20" height="20">
   <data encoding="csv">
@@ -63,7 +62,7 @@
  </layer>
  <objectgroup id="10" name="Object Layer 1">
   <object id="21" name="startpoint" type="startpoint" x="320" y="609"/>
-  <object id="22" name="portal" type="portalout" x="606" y="33" width="34" height="33"/>
+  <object id="22" name="portalboss" type="portalout" x="606" y="33" width="34" height="33"/>
   <object id="23" name="portal" type="portalout" x="290" y="622" width="62" height="16"/>
   <object id="24" x="-1" y="383" width="513" height="96"/>
   <object id="25" x="0" y="1" width="607" height="93"/>

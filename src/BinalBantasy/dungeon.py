@@ -4,6 +4,8 @@
 # Binal Bantasy
 
 import os.path
+import random
+import math
 
 import pygame
 from pygame.locals import *
@@ -21,6 +23,82 @@ RESOURCES_DIR = 'Data'
 HERO_MOVE_SPEED = 69  # pixels per second
 MAP_FILENAME = 'BinalOverworld2.tmx'
 
+# filename + portalnum: new filename
+inPortalDict = {
+    "data/BinalOverworld2.tmxdungeon1": "BinalDungeon1.tmx",
+    "data/BinalDungeon1.tmxportalboss": "BinalDungeon1_Boss.tmx",
+    "data/BinalDungeon1_Boss.tmxportalexit": "BinalOverworld2.tmx",
+}
+
+#current filename: instance portalO (portal out)
+outPortalDict = {
+    "data/BinalDungeon1.tmx": "BinalDungeon1_Boss.tmx",
+    
+}
+
+# used to randomly select monsters
+enemyNames = {
+    0: "slime", 
+    1: "red slime",  
+    2: "draky",
+    3: "mud man", 
+    4: "dragon", 
+    5: "ghost",
+    6: "skeleton" 
+}
+
+# monster name: (image.png, (resizeX, resizeY), Y adjustor up/down, +-adj)
+# (negative adj for left)
+enemyImages = {
+    "slime": ("slime.png", (90, 90), 40), 
+    "mud man": ("mudMan.png", (180, 185), -10), 
+    "draky": ("draky.png", (150, 100), 20),
+    "red slime": ("redslime.png", (80, 80), 40),
+    "dragon": ("dragon.png", (300, 250), -60, -120),
+    "skeleton": ("skeleton.png", (120, 160), -10), 
+    "ghost": ("ghost.png", (140, 160), -10),
+}
+
+# monster name: exp reward
+enemyExp = {
+    "slime": 5, 
+    "red slime": 10, 
+    "draky": 15, 
+    "mud man": 30,
+    "dragon": 5500, 
+    "skeleton": 60, 
+    "ghost": 20
+}
+
+# enemy hitpoints
+enemyStats = {
+    "slime": 5,
+    "red slime": 6,
+    "draky": 10,
+    "mud man": 12,
+    "dragon": 750, 
+    "skeleton": 20,
+    "ghost": 9
+}
+
+# current level: exp threshold to level up to next
+levelDict = {
+    1: 30, 2: 90, 3: 240, 4: 480, 5: 900, 6: 1000, 7: 2000, 8: 3500,
+    9: 6000, 10: 9500, 11: 15000, 12: 22000, 13: 31000, 14: 50000,
+    15: 69000, 16: 90000, 17: 120000, 18: 151000, 19: 200000
+}
+
+# key filename: image background for battle mode
+backgroundDict = {
+    "data/Tower.tmx": "Resources/towerInside.jpg",
+    "Tower.tmx": "Resources/towerInside.jpg",
+    "data/temple1.tmx": "Resources/desert.jpg",
+    "data/house1Basement.tmx": "Resources/cellar.jpg",
+    "data/temple2.tmx": "Resources/desertDungeon.jpg",
+    "data/temple1.tmx": "Resources/desert.png",
+    "data/house1Basement2.tmx": "Resources/cellar.jpg"
+
+}
 
 # simple wrapper to keep the screen resizeable
 def init_screen(width, height):
@@ -98,6 +176,13 @@ class Hero(Pallete):
         (width, height) = (self.width, self.height)
         (charWidth, charHeight) = (width / cols, height / rows)
 
+        self.maxHitPoints = 10
+        self.hitPoints = self.maxHitPoints
+        self.maxMana = 10
+        self.mana = self.maxMana
+        self.experiencePoints = 0
+        self.level = 1
+
         self.ups = list()
         self.rights = list()
         self.downs = list()
@@ -164,7 +249,102 @@ class Hero(Pallete):
                 n = 1
         self.image = self.currImageList[n]
 
+    def levelup(self):
+        self.level += 1
+        self.mana += self.mana * .1
+        self.hitPoints += self.hitPoints * .1
+        self.
 
+
+class Monster(object):
+    def __init__(self, name, battle, surface):
+        # load monster image
+        filename = enemyImages[name][0]
+        self.image = load_image(filename).convert_alpha()
+        self.battle = battle
+        self.screen = surface
+        self.name = name
+        # resize image
+        (x, y) = enemyImages[name][1]
+        self.image = pygame.transform.scale(self.image, (x, y))
+        self.hitpoints = enemyStats[name]
+        self.reposition = enemyImages[name][2]
+        self.text = "What will you do?"
+        self.text2 = None
+
+        # enemy attack on hero
+        def attack(self, hero):
+            screen = self.screen
+            timeDelay(300)
+
+            # perform attack 
+            damage = math.ceil(random.randrange(1, self.hitpoints) *.5)
+            hero.hitpoints -= damage
+            if hero.hitpoints < 0:
+                hero.hitpoints = 0
+            
+            # play hit sound
+            playSound("enemyhit.wav", 1)
+
+            self.text = other.name + " took " + str(damage) + " damage!"
+
+            # refresh battle text
+            self.battle.drawBattle(screen)
+            timeDelay(600)
+
+        # hero faints if hp is 0
+        if other.hitpoints == 0:
+            self.text = str(other.name) + " has fainted!"
+            # battle text
+            pygame.mixer.music.pause()
+            self.battle.drawBattle(screen)
+            timeDelay(1500)
+
+class Battle(object):
+    def __init__(self, game, hero, position, screen):
+        self.hero = hero
+        self.heroLevel = = hero.level
+        self.leveled = False
+        self.game = game
+        self.screen = screen
+        self.position = position
+
+        # background for battle screen
+        image = "Resources/field.jpg"
+        self.enemyName = enemyNames[random.randrange(0, len(enemyNames))]
+
+        if game.mode2 != "Overworld":
+            image = backgroundDict[game.filename]
+
+        self.enemy = Monster(self.enemyName, self, screen)
+        self.enemyDefeatText = "The " + self.enemyName + " was defeated!"
+
+        self.background = pygame.image.load(image)
+
+    # draw battle windows
+    def drawRectMenu(self, surface, x, y):
+        WHITE = (255, 255, 255)
+        BLACK = (0, 0, 0)
+        pygame.draw.rect(surface, BLACK, [x/5, y/2 + 70, x/2+100, y/5])
+        pygame.draw.rect(surface, WHITE, [x/5, y/2 + 70, x/2+100, y/5], 5)
+
+    def drawBattle(self, surface):
+        # draws monster image and menus
+        x = surface.get_width()
+        y = surface.get_height()
+        WHITE = (255, 255, 255)
+        BLACK = (0, 0, 0)
+        pygame.draw.rect(surface, BLACK, [100, 100, x - 200, y-200])
+        pygame.draw.rect(surface, WHITE, [100, 100, x - 200, y-200], 5)
+        myFont = pygame.font.SysFont("monospace", 30)
+        text = myFont.render(" Battle", 1, WHITE)
+
+        # draw background
+        self.background = pygame.transform.scale(self.background, (x - 200, y-200))
+        surface.blit(self.background, (100, 100))
+        surface.blit(text, (100, 100))
+
+        # 
 
 
 class QuestGame(object):
@@ -176,8 +356,9 @@ class QuestGame(object):
     """
     filename = get_map(MAP_FILENAME)
 
-    def __init__(self):
-
+    def __init__(self, filename, oldEntrance=None, oldmap=None, hero=None):
+        self.portalName = ''
+        
         # true while running
         self.running = False
 
