@@ -99,19 +99,34 @@ inPortalDict = {
     "BinalOverworld2.town2": "town2.tmx",
     "BinalOverworld2.city1": "city1.tmx",
     "BinalOverworld2.library": "library-inn.tmx",
-    "BinalOverworld2.town1": "Town1.tmx",
     "BinalOverworld2.dungeon1": "dungeon1.tmx",
     "BinalOverworld2.FSU": "FSU.tmx",
     "BinalOverworld2.city1": "city1.tmx",
     "BinalOverworld2.stonehenge": "stonehenge.tmx",
     "BinalOverworld2.everest": "everest.tmx",
     "BinalOverworld2.end": "end.tmx",
+    "BinalOverwold2.temple1": "temple1-inn.tmx"
 }
 
 #current filename: instance portalO (portal out)
 outPortalDict = {
     "data/BinalDungeon1.tmx": "BinalDungeon1_Boss.tmx",
     
+}
+
+OldEntranceDict = {
+    "Town1.tmx": (1535, 1727), 
+    "sandtower.tmx": (1921, 1537),
+    "town2.tmx": (2042, 541),
+    "city1.tmx": (958, 511),
+    "library-inn.tmx": (1470, 1214),
+    "dungeon1.tmx": (1281, 1280),
+    "FSU.tmx": (671, 1885),
+    "city1.tmx": (958, 511),
+    "stonehenge.tmx": (2050, 2597),
+    "everest.tmx": (2314, 2109),
+    "end.tmx": (2305, 1180),
+    "temple1-inn.tmx": (1339, 2556)
 }
 
 # used to randomly select monsters
