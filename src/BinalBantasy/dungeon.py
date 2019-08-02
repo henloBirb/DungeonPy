@@ -306,7 +306,7 @@ class Hero(Pallete):
         self.level += 1
         self.mana += self.mana * .1
         self.hitPoints += self.hitPoints * .1
-        self.
+        #self.
 
 
 class Monster(object):
@@ -356,7 +356,7 @@ class Monster(object):
 class Battle(object):
     def __init__(self, game, hero, position, screen):
         self.hero = hero
-        self.heroLevel = = hero.level
+        self.heroLevel = hero.level
         self.leveled = False
         self.game = game
         self.screen = screen
@@ -629,7 +629,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Binal Bantasy')
 
     try:
-        game = BinalGame()
+        game = BinalGame('BinalOverworld2')
         game.run()
     except:
         pygame.quit()
