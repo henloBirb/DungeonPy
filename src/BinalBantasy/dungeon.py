@@ -88,7 +88,7 @@ from pyscroll.group import PyscrollGroup
 RESOURCES_DIR = 'Data'
 
 HERO_MOVE_SPEED = 69  # pixels per second
-MAP_FILENAME = 'stonehenge.tmx'
+MAP_FILENAME = 'BinalOverworld2.tmx'
 
 
 # simple wrapper to keep the screen resizeable
