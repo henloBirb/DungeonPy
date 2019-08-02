@@ -169,6 +169,11 @@ backgroundDict = {
 
 }
 
+# character states to determine is random encounters take place
+heroStates = {
+    'data/BinalOverworld2.tmx': 'Overworld'
+}
+
 # simple wrapper to keep the screen resizeable
 def init_screen(width, height):
     screen = pygame.display.set_mode((width, height), pygame.RESIZABLE)
@@ -304,9 +309,10 @@ class Hero(Pallete):
 
     def levelup(self):
         self.level += 1
-        self.mana += self.mana * .1
-        self.hitPoints += self.hitPoints * .1
-        self.
+        self.maxHitPoints += self.maxHitPoints *.1
+        self.hitPoints = self.maxHitPoints
+        self.maxMana += self.maxMana * .1
+        self.mana = self.maxMana
 
 
 class Monster(object):
@@ -411,6 +417,26 @@ class BinalGame(object):
 
     def __init__(self, filename, oldEntrance=None, oldmap=None, hero=None):
         self.portalName = ''
+        self.portalsIn = list()
+        self.portalsOut = list()
+        
+        self.olfFilename = None
+        self.filename = get_map(filename)
+        
+        if self.filename in heroStates:
+            self.mode = heroStates[self.filename]
+        else:
+            self.mode = "Peaceful"
+        
+        if oldmap == None:
+            self.oldMap = filename
+        else:
+            self.oldMap = oldmap
+
+        overworld = 'BinalOverworld2.tmx'
+        self.oldEntrance = oldEntrance
+        self.battleInstance = False
+
         
         # true while running
         self.running = False
@@ -455,7 +481,28 @@ class BinalGame(object):
                 self.startpoints.append((object.x, object.y))
 
         self.hero.position = (self.startpoints[0][0], self.startpoints[0][1])
+        self.oldPosition = self.hero.position
+        self.group.add(self.hero)
+        self.steps = 0
+        self.battle = 1
 
+        # set default zoom when not in overworld
+        if self.oldMap == overworld and self.filename != "data/" + overworld:
+            self.map_layer.zoom = self.map_layer.zoom - .25
+        
+        self.portalNames = list()
+        # add portals to collider lists
+        for object in tmx_data.objects:
+            if object.type == "portalIn":
+                self.portalNames.append(object)
+                self.portalsIn.append(pygame.Rect(
+                    object.x, object.y,
+                    object.width, object.height))
+            elif object.type == "portalO":
+                self.portalsOut.append(pygame.Rect(
+                    object.x, object.y,
+                    object.width, object.height))
+            
     def draw(self, surface):
 
         # center the map/screen on our Hero
@@ -463,6 +510,24 @@ class BinalGame(object):
 
         # draw the map and all sprites
         self.group.draw(surface)
+
+    def nearestPortal(self, trigger=False):
+                (x, y) = self.hero.position
+        for portal in self.portalsIn:
+            if trigger == False:
+                trigger = True
+                self.oldEntrance = (portal.x, portal.y)
+                (p, q) = self.oldEntrance
+            distanceNew = (math.sqrt((x - portal.x)**2+(y-portal.y)**2))
+            distanceOld = (math.sqrt((x - p)**2+(y-q)**2))
+        
+            if distanceNew < distanceOld:
+                distanceOld = distanceNew
+                self.oldEntrance = (portal.x, portal.y)
+                (p, q) = (portal.x, portal.y)
+        for portal in self.portalNames:
+            if self.almostEqual((p,q), (portal.x, portal.y)):
+                self.portalName = portal.name
 
     def handle_input(self):
         """ Handle pygame input events
@@ -591,6 +656,42 @@ class BinalGame(object):
     #     if checkForKeyPress():
     #         self.run()
 
+    @staticmethod
+    def almostEqual(position1, position2):
+        (x1, y1) = position1
+        (x2, y2) = position2
+
+        if abs(x1-x2) < epsilon:
+            if abs(y1-y2) < epsilon:
+                 return True
+        return False
+
+    def randomBattle(self):
+       # prevents battle from happening right on town portal
+        for sprite in self.group.sprites():
+            if sprite.feet.collidelist(self.portalsIn) > -1:
+                return None
+        if self.almostEqual(position, self.oldPosition): 
+            return None
+        if self.mode == "Peaceful" or self.mode == "Battle": 
+            return None
+        diceRoll = random.randint(0, 100)
+        #increased encounter rate when walking without encountering
+        # a single battle for a certain number of steps
+        threshold = 600
+        if self.steps > threshold:
+            if diceRoll < 50:
+                self.mode = "Battle"
+                self.steps = 0
+
+        if self.steps > 200:
+        # lower encounter rate when just beginning to walk
+            if diceRoll < 200:
+                self.mode = "Battle"
+                self.steps = 0
+
+
+        self.oldPosition = position 
 
     def run(self):
         """ Run the game loop
