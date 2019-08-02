@@ -94,9 +94,18 @@ MAP_FILENAME = 'BinalOverworld2.tmx'
 
 # filename + portalnum: new filename
 inPortalDict = {
-    "data/BinalOverworld2.tmxdungeon1": "BinalDungeon1.tmx",
-    "data/BinalDungeon1.tmxportalboss": "BinalDungeon1_Boss.tmx",
-    "data/BinalDungeon1_Boss.tmxportalexit": "BinalOverworld2.tmx",
+    "BinalOverworld2.town1": "Town1.tmx",
+    "BinalOverworld2.sandtower": "sandtower.tmx",
+    "BinalOverworld2.town2": "town2.tmx",
+    "BinalOverworld2.city1": "city1.tmx",
+    "BinalOverworld2.library": "library-inn.tmx",
+    "BinalOverworld2.town1": "Town1.tmx",
+    "BinalOverworld2.dungeon1": "dungeon1.tmx",
+    "BinalOverworld2.FSU": "FSU.tmx",
+    "BinalOverworld2.city1": "city1.tmx",
+    "BinalOverworld2.stonehenge": "stonehenge.tmx",
+    "BinalOverworld2.everest": "everest.tmx",
+    "BinalOverworld2.end": "end.tmx",
 }
 
 #current filename: instance portalO (portal out)
@@ -749,7 +758,7 @@ if __name__ == "__main__":
     pygame.display.set_caption('Binal Bantasy')
 
     try:
-        game = BinalGame('BinalOverworld2')
+        game = BinalGame('BinalOverworld2.tmx')
         game.run()
     except:
         pygame.quit()
