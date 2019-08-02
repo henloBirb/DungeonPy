@@ -720,6 +720,7 @@ class BinalGame(object):
     def run(self):
         """ Run the game loop
         """
+        filename = self.filename
         clock = pygame.time.Clock()
         self.running = True
 
@@ -742,6 +743,7 @@ class BinalGame(object):
                 
                 # changing map
                 if self.filename != filename:
+                    # leaving map toward overworld
                     if self.oldMap == os.path.join(RESOURCES_DIR, self.filename):
                         oldMap = inPortalDict[str(os.path.join(RESOURCES_DIR, self.filename)) + self.portalName]
                     else:
@@ -749,8 +751,8 @@ class BinalGame(object):
                     self.__init__(self.filename, self.oldEntrance, oldMap, self.hero)
                     self.oldEntrance = OldEntranceDict[filename]
 
-                    if os.path.jain(RESOURCES_DIR, inPortalDict[filename]) == self.filename:
-                        if self.oldEntrance != None
+                    if os.path.join(RESOURCES_DIR, inPortalDict[filename]) == self.filename:
+                        if self.oldEntrance != None:
                             position = (self.oldEntrance[0], self.oldEntrance[1])
                             self.hero.position = position
                             self.oldPosition = position
