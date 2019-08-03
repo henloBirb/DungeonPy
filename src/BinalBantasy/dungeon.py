@@ -484,8 +484,31 @@ class Battle(object):
         if self.enemy.text == 'What will you do?':
             surface.blit(control1, (x/2, y/2 + 131))
             surface.blit(control2, (x/2, y/2 + 161))
-        
-        
+        surface.blit(enemyText, (x/3 + x/11 + 10, y/2 + 100))
+        if self.enemytext2 != None:
+            enemyText2 = myFont.render(self.enemy.text2, 1, WHITE)
+            surface.blit(monsterText2, (x/3 + x/11 + 10, y/2 + 131))
+
+    def endBattle(self, game):
+        if self.enemy.hitpoints <= 0:
+            game.battleInstance = False
+        self.hero.levelUp(self)
+        timeDelay(1500)
+        game.mode = heroStates[self.game.filename]
+        self.hero.position = self.position
+
+        # send to instance start point if hero faints
+        if self.hero.hitPoints <= 0:
+            game.battleInstance = False
+            self.hero.hitPoints = self.hero.maxHitPoints
+            self.hero.position = (game.startpoints[0][0],
+                                  game.startpoints[0][1])
+            if game.filename in heroStates:
+
+                game.mode = heroStates[game.filename]
+                game.mode2 = heroStates[game.filename]
+
+                
 
 
 
@@ -810,11 +833,9 @@ class BinalGame(object):
                 ticks = pygame.time.get_ticks()
                 self.hero.walkAnimation(ticks)
                 
-                '''self.randomBattle()
-                if self.mode == "Battle":
-                    if self.battleInstance == False:
-                        if filename in battleDict:
-                            self.mode2 = '''
+                # beginning of random battle
+                # self.randomBattle()
+                    
                 # changing map
                 if self.filename != filename:
                     # leaving map toward overworld
