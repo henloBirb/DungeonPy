@@ -110,6 +110,7 @@ inPortalDict = {
 
 #current filename: instance portalO (portal out)
 outPortalDict = {
+    "Data/BinalOverworld2.tmx": "BinalOverworld2.tmx",
     "Data/Town1.tmx": "BinalOverworld2.tmx",
     "Data/sandtower.tmx": "BinalOverworld2.tmx",
     "Data/town2.tmx": "BinalOverworld2.tmx",
@@ -125,18 +126,19 @@ outPortalDict = {
 }
 
 OldEntranceDict = {
-    "Town1.tmx": (1535, 1727), 
-    "sandtower.tmx": (1921, 1537),
-    "town2.tmx": (2042, 541),
-    "city1.tmx": (958, 511),
-    "library-inn.tmx": (1470, 1214),
-    "dungeon1.tmx": (1281, 1280),
-    "FSU.tmx": (671, 1885),
-    "city1.tmx": (958, 511),
-    "stonehenge.tmx": (2050, 2597),
-    "everest.tmx": (2314, 2109),
-    "end.tmx": (2305, 1180),
-    "temple1-inn.tmx": (1339, 2556)
+    "Data/BinalOverworld2.tmx": (1443, 1921),
+    "Data/Town1.tmx": (1535, 1727), 
+    "Data/sandtower.tmx": (1921, 1537),
+    "Data/town2.tmx": (2042, 541),
+    "Data/city1.tmx": (958, 511),
+    "Data/library-inn.tmx": (1470, 1214),
+    "Data/dungeon1.tmx": (1281, 1280),
+    "Data/FSU.tmx": (671, 1885),
+    "Data/city1.tmx": (958, 511),
+    "Data/stonehenge.tmx": (2050, 2597),
+    "Data/everest.tmx": (2314, 2109),
+    "Data/end.tmx": (2305, 1180),
+    "Data/temple1-inn.tmx": (1339, 2556)
 }
 
 # used to randomly select monsters
@@ -773,7 +775,7 @@ class BinalGame(object):
                     self.__init__(self.filename, self.oldEntrance, oldMap, self.hero)
                     self.oldEntrance = OldEntranceDict[filename]
 
-                    if os.path.join(RESOURCES_DIR, inPortalDict[filename]) == self.filename:
+                    if os.path.join(RESOURCES_DIR, outPortalDict[filename]) == self.filename:
                         if self.oldEntrance != None:
                             position = (self.oldEntrance[0], self.oldEntrance[1])
                             self.hero.position = position
