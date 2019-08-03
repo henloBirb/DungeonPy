@@ -110,8 +110,18 @@ inPortalDict = {
 
 #current filename: instance portalO (portal out)
 outPortalDict = {
-    "data/BinalDungeon1.tmx": "BinalDungeon1_Boss.tmx",
-    
+    "Data/Town1.tmx": "BinalOverworld2.tmx",
+    "Data/sandtower.tmx": "BinalOverworld2.tmx",
+    "Data/town2.tmx": "BinalOverworld2.tmx",
+    "Data/city1.tmx": "BinalOverworld2.tmx",
+    "Data/library-inn.tmx": "BinalOverworld2.tmx",
+    "Data/dungeon1.tmx": "BinalOverworld2.tmx",
+    "Data/FSU.tmx": "BinalOverworld2.tmx",
+    "Data/city1.tmx": "BinalOverworld2.tmx",
+    "Data/stonehenge.tmx": "BinalOverworld2.tmx",
+    "Data/everest.tmx": "BinalOverworld2.tmx",
+    "Data/end.tmx": "BinalOverworld2.tmx",
+    "Data/temple1-inn.tmx": "BinalOverworld2.tmx",
 }
 
 OldEntranceDict = {
