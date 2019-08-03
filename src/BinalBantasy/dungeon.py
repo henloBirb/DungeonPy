@@ -94,18 +94,18 @@ MAP_FILENAME = 'BinalOverworld2.tmx'
 
 # filename + portalnum: new filename
 inPortalDict = {
-    "BinalOverworld2.town1": "Town1.tmx",
-    "BinalOverworld2.sandtower": "sandtower.tmx",
-    "BinalOverworld2.town2": "town2.tmx",
-    "BinalOverworld2.city1": "city1.tmx",
-    "BinalOverworld2.library": "library-inn.tmx",
-    "BinalOverworld2.dungeon1": "dungeon1.tmx",
-    "BinalOverworld2.FSU": "FSU.tmx",
-    "BinalOverworld2.city1": "city1.tmx",
-    "BinalOverworld2.stonehenge": "stonehenge.tmx",
-    "BinalOverworld2.everest": "everest.tmx",
-    "BinalOverworld2.end": "end.tmx",
-    "BinalOverwold2.temple1": "temple1-inn.tmx"
+    "Data/BinalOverworld2.tmxtown1": "Town1.tmx",
+    "Data/BinalOverworld2.tmxsandtower": "sandtower.tmx",
+    "Data/BinalOverworld2.tmxtown2": "town2.tmx",
+    "Data/BinalOverworld2.tmxcity1": "city1.tmx",
+    "Data/BinalOverworld2.tmxlibrary": "library-inn.tmx",
+    "Data/BinalOverworld2.tmxdungeon1": "dungeon1.tmx",
+    "Data/BinalOverworld2.tmxFSU": "FSU.tmx",
+    "Data/BinalOverworld2.tmxcity1": "city1.tmx",
+    "Data/BinalOverworld2.tmxstonehenge": "stonehenge.tmx",
+    "Data/BinalOverworld2.tmxeverest": "everest.tmx",
+    "Data/BinalOverworld2.tmxend": "end.tmx",
+    "Data/BinalOverwold2.tmxtemple1": "temple1-inn.tmx"
 }
 
 #current filename: instance portalO (portal out)
@@ -251,6 +251,7 @@ class Hero(Pallete):
         self._old_position = self.position
         self.rect = self.image.get_rect()
         self.feet = pygame.Rect(0, 0, self.rect.width * .5, 8)
+        self.type = "hero"
 
         Pallete.__init__(self, 'heroes.png', 8, 12, 2, 4)
         (rows, cols) = (self.rows, self.cols)
@@ -656,6 +657,17 @@ class BinalGame(object):
         # sprite must have a rect called feet, and move_back method,
         # otherwise this will fail
         for sprite in self.group.sprites():
+            if sprite.feet.collidelist(self.portalsIn) > -1:
+                if sprite.type == "hero":
+
+                    self.nearestPortal()
+                    self.filename = inPortalDict[self.filename+self.portalName]
+                    self.hero.position = (self.startpoints[0][0], self.startpoints[0][1])
+            elif sprite.feet.collidelist(self.portalsOut) > -1:
+                if sprite.type == "hero":
+                    filename = outPortalDict[self.filename]
+                    self.filename = filename
+                    self.hero.position = (self.startpoints[0][0], self.startpoints[0][1])
             if sprite.feet.collidelist(self.walls) > -1:
                 sprite.move_back(dt)
 
@@ -684,7 +696,7 @@ class BinalGame(object):
     def almostEqual(position1, position2):
         (x1, y1) = position1
         (x2, y2) = position2
-
+        epsilon = 60
         if abs(x1-x2) < epsilon:
             if abs(y1-y2) < epsilon:
                  return True
