@@ -94,51 +94,51 @@ MAP_FILENAME = 'BinalOverworld2.tmx'
 
 # filename + portalnum: new filename
 inPortalDict = {
-    "Data/BinalOverworld2.tmxtown1": "Town1.tmx",
-    "Data/BinalOverworld2.tmxsandtower": "sandtower.tmx",
-    "Data/BinalOverworld2.tmxtown2": "town2.tmx",
-    "Data/BinalOverworld2.tmxcity1": "city1.tmx",
-    "Data/BinalOverworld2.tmxlibrary": "library-inn.tmx",
-    "Data/BinalOverworld2.tmxdungeon1": "dungeon1.tmx",
-    "Data/BinalOverworld2.tmxFSU": "FSU.tmx",
-    "Data/BinalOverworld2.tmxcity1": "city1.tmx",
-    "Data/BinalOverworld2.tmxstonehenge": "stonehenge.tmx",
-    "Data/BinalOverworld2.tmxeverest": "everest.tmx",
-    "Data/BinalOverworld2.tmxend": "end.tmx",
-    "Data/BinalOverwold2.tmxtemple1": "temple1-inn.tmx"
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxtown1')): "Town1.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxsandtower')): "sandtower.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxtown2')): "town2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxcity1')): "city1.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxlibrary')): "library-inn.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxdungeon1')): "dungeon1.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxFSU')): "FSU.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxcity1')): "city1.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxstonehenge')): "stonehenge.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxeverest')): "everest.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmxend')): "end.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverwold2.tmxtemple1')): "temple1-inn.tmx"
 }
 
 #current filename: instance portalO (portal out)
 outPortalDict = {
-    "Data/BinalOverworld2.tmx": "BinalOverworld2.tmx",
-    "Data/Town1.tmx": "BinalOverworld2.tmx",
-    "Data/sandtower.tmx": "BinalOverworld2.tmx",
-    "Data/town2.tmx": "BinalOverworld2.tmx",
-    "Data/city1.tmx": "BinalOverworld2.tmx",
-    "Data/library-inn.tmx": "BinalOverworld2.tmx",
-    "Data/dungeon1.tmx": "BinalOverworld2.tmx",
-    "Data/FSU.tmx": "BinalOverworld2.tmx",
-    "Data/city1.tmx": "BinalOverworld2.tmx",
-    "Data/stonehenge.tmx": "BinalOverworld2.tmx",
-    "Data/everest.tmx": "BinalOverworld2.tmx",
-    "Data/end.tmx": "BinalOverworld2.tmx",
-    "Data/temple1-inn.tmx": "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'Town1.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'sandtower.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'town2.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'city1.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'library-inn.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'ungeon1.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'FSU.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'city1.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'stonehenge.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'everest.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'end.tmx')): "BinalOverworld2.tmx",
+    str(os.path.join(RESOURCES_DIR, 'temple1-inn.tmx')): "BinalOverworld2.tmx",
 }
 
 OldEntranceDict = {
-    "Data/BinalOverworld2.tmx": (1443, 1921),
-    "Data/Town1.tmx": (1535, 1727), 
-    "Data/sandtower.tmx": (1921, 1537),
-    "Data/town2.tmx": (2042, 541),
-    "Data/city1.tmx": (958, 511),
-    "Data/library-inn.tmx": (1470, 1214),
-    "Data/dungeon1.tmx": (1281, 1280),
-    "Data/FSU.tmx": (671, 1885),
-    "Data/city1.tmx": (958, 511),
-    "Data/stonehenge.tmx": (2050, 2597),
-    "Data/everest.tmx": (2314, 2109),
-    "Data/end.tmx": (2305, 1180),
-    "Data/temple1-inn.tmx": (1339, 2556)
+    str(os.path.join(RESOURCES_DIR, 'BinalOverworld2.tmx')): (1443, 1921),
+    str(os.path.join(RESOURCES_DIR, 'Town1.tmx')): (1535, 1727),
+    str(os.path.join(RESOURCES_DIR, 'sandtower.tmx')): (1921, 1537),
+    str(os.path.join(RESOURCES_DIR, 'town2.tmx')): (2042, 541),
+    str(os.path.join(RESOURCES_DIR, 'city1.tmx')): (958, 511),
+    str(os.path.join(RESOURCES_DIR, 'library-inn.tmx')): (1470, 1214),
+    str(os.path.join(RESOURCES_DIR, 'dungeon1.tmx')): (1281, 1280),
+    str(os.path.join(RESOURCES_DIR, 'FSU.tmx')): (671, 1885),
+    str(os.path.join(RESOURCES_DIR, 'city1.tmx')): (958, 511),
+    str(os.path.join(RESOURCES_DIR, 'stonehenge.tmx')): (2050, 2597),
+    str(os.path.join(RESOURCES_DIR, 'everest.tmx')): (2314, 2109),
+    str(os.path.join(RESOURCES_DIR, 'end.tmx')): (2305, 1180),
+    str(os.path.join(RESOURCES_DIR, 'temple1-inn.tmx')): (1339, 2556)
 }
 
 # used to randomly select monsters
@@ -440,7 +440,53 @@ class Battle(object):
         surface.blit(self.background, (100, 100))
         surface.blit(text, (100, 100))
 
-        # 
+        # displey enemy defeated prompt if HP is below 0
+        if self.enemy.hitpoints > 0:
+            adj = -50
+            name = self.enemy.enemyName
+            if len(enemyImages[name]) >= 4:
+                adj = enemyImages[name][3]
+            surface.blit(self.enemy.image, (x/2+adj, y/2-90+self.enemy.reposition))
+            control1 = myFont.render('Attack: [SPACE]', 1, WHITE)
+            control2 = myFont.render('Run:     [R]', 1, WHITE)
+        elif self.enemy.hitpoints <= 0:
+            self.prompt = myFont.render(self.enemyDefeatText, 1, WHITE)
+            surface.blit(self.prompt, (x/5, 140))
+            if self.heroLevel < self.hero.level:
+                self.leveled = True
+            if self.leveled == True:
+                placement = (x/5 + 10, y/2 + 70)
+                levelText = self.hero.name + ' leveled up!'
+                levelText = myFont.render(levelText, 1, WHITE)
+                surface.blit(levelText, placement)
+        else:
+            self.prompt = myFont.render('A ' + self.enemyName + ' appears!', 1, WHITE)
+            surface.blit(self.prompt, (x/5, 140))
+        
+        #draw menu
+        self.drawRectMenu(surface, x, y)
+        edge = (x/3 + x/15)
+
+        length = len(self.enemy.text)
+
+        # wraps text
+        if self.enemy.text2 == None and length * 50 > edge:
+            place = len(self.enemy.text)
+            self.enemy.text2 = ' '
+            while length * 21 > edge or self.enemy.text2[-1] != ' ':
+                place -= 1
+                self.enemy.text2 += self.enemy.text[place:]
+                self.enemy.text = self.enemy.text[0:place]
+                length = len(self.enemy.text)
+            self.enemy.text2 = self.monster.text2[::-1]
+
+        enemyText = myFont.render(self.enemy,text, 1, WHITE)
+        if self.enemy.text == 'What will you do?':
+            surface.blit(control1, (x/2, y/2 + 131))
+            surface.blit(control2, (x/2, y/2 + 161))
+        
+        
+
 
 
 class BinalGame(object):
@@ -763,8 +809,12 @@ class BinalGame(object):
                 # print(sum(times)/len(times))#idle hero animation
                 ticks = pygame.time.get_ticks()
                 self.hero.walkAnimation(ticks)
-                # self.randomBattle()
                 
+                '''self.randomBattle()
+                if self.mode == "Battle":
+                    if self.battleInstance == False:
+                        if filename in battleDict:
+                            self.mode2 = '''
                 # changing map
                 if self.filename != filename:
                     # leaving map toward overworld
